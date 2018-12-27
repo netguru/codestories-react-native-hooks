@@ -1,0 +1,5 @@
+export const COLOR_PRIMARY = '#3BB273'
+export const COLOR_TEXT = '#FFFFFF'
+export const COLOR_BG = '#C84630'
+export const COLOR_WHITE = '#FFFFFF'
+export const COLOR_BLACK = '#000'
