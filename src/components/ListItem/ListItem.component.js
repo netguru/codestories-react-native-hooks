@@ -2,38 +2,28 @@ import React, { useEffect } from 'react'
 import PT from 'prop-types'
 import { StyleSheet, TouchableOpacity } from 'react-native'
 import Text from 'components/Text'
+import { human } from "react-native-typography";
 
 const styles = StyleSheet.create({
   text: {
+    ...human.title1White,
     textAlign: 'center',
-  },
-
-  selectedText: {
-    opacity: 0.8,
   },
 })
 
-export default function ListItem({ onPress, selected, value }) {
-  console.log(value, selected)
-  let textStyles = [styles.text]
-  if (selected) textStyles.push(styles.selectedText)
-
-  useEffect(() => {}, [selected])
-
+export default function ListItem({ onPress, value }) {
   return (
     <TouchableOpacity onPress={onPress}>
-      <Text style={textStyles}>{value}</Text>
+      <Text style={styles.text}>{value}</Text>
     </TouchableOpacity>
   )
 }
 
 ListItem.propTypes = {
   onPress: PT.func,
-  selected: PT.bool,
   value: PT.string.isRequired,
 }
 
 ListItem.defaultProps = {
   onPress: () => {},
-  selected: false,
 }

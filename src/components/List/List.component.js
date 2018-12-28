@@ -5,7 +5,7 @@ import ListItem from 'components/ListItem'
 
 const styles = StyleSheet.create({})
 
-export default function List({ data, onSelect, selectedItemValidator }) {
+export default function List({ data, onSelect, selectedItemValidator, style }) {
   const renderItem = ({ item }) => (
     <ListItem
       value={item.name}
@@ -15,7 +15,7 @@ export default function List({ data, onSelect, selectedItemValidator }) {
   )
 
   return (
-    <View>
+    <View style={style}>
       <FlatList data={data} renderItem={renderItem} keyExtractor={(item) => item.id} />
     </View>
   )
@@ -25,9 +25,11 @@ List.propTypes = {
   data: PT.arrayOf(PT.object).isRequired,
   onSelect: PT.func,
   selectedItemValidator: PT.func,
+  style: PT.object,
 }
 
 List.defaultProps = {
   onSelect: () => {},
   selectedItemValidator: () => false,
+  style: {},
 }

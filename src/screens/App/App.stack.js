@@ -3,7 +3,7 @@ import { COLOR_BG, COLOR_TEXT } from 'constants/colors'
 import Home from './Home.screen'
 import ListFriends from './ListFriends.screen'
 import BeforeDraw from './BeforeDraw.screen'
-import FriendDraw from './FriendDraw.screen'
+import PersonSelect from './PersonSelect.screen'
 import DrawnFriend from './DrawnFriend.screen'
 
 const AppStack = createStackNavigator(
@@ -11,7 +11,7 @@ const AppStack = createStackNavigator(
     Home,
     ListFriends,
     BeforeDraw,
-    FriendDraw,
+    PersonSelect,
     DrawnFriend,
   },
   {

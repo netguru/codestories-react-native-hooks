@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 })
 
 export default function BeforeDraw({ navigation }) {
-  const onReadyPress = () => navigation.navigate('FriendDraw')
+  const onReadyPress = () => navigation.navigate('PersonSelect')
 
   return (
     <Screen>

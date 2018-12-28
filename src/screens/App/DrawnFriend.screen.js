@@ -2,8 +2,8 @@ import React, { useContext, useEffect } from 'react'
 import { ActivityIndicator } from 'react-native'
 import { NavigationPropTypes } from 'app/prop-types'
 import Screen from 'components/Screen'
-import Header from 'components/Header/Header.component'
 import { AppContext, updateFriend } from 'contexts/app.context'
+import DrawResult from 'components/DrawResult'
 
 export default function DrawnFriend({ navigation }) {
   const [{ friends }, dispatch] = useContext(AppContext)
@@ -11,7 +11,6 @@ export default function DrawnFriend({ navigation }) {
   const personId = navigation.getParam('personId')
   const person = friends.filter((friend) => friend.id === personId)[0]
 
-  const getRandomOpener = () => ['Awesome', 'Great', 'Fantastic'][Math.floor(Math.random() * 3)]
   const drawFriend = () => {
     const drawnFriends = friends
       .map((friend) => friend.drawnFriendId)
@@ -28,19 +27,22 @@ export default function DrawnFriend({ navigation }) {
     drawFriend()
   }, [])
 
-  const drawnFriend = friends.filter((friend) => friend.id === person.drawnFriendId)[0]
+  const goBack = () => navigation.goBack()
 
   return (
     <Screen>
-      {drawnFriend ? (
-        <Header>
-          {getRandomOpener()}, {person.name}, you drew {drawnFriend.name}.
-        </Header>
+      {person.drawnFriendId ? (
+        <DrawResult onDone={goBack} personId={personId} />
       ) : (
         <ActivityIndicator />
       )}
     </Screen>
   )
+}
+
+DrawnFriend.navigationOptions = {
+  headerLeft: null,
+  gesturesEnabled: false,
 }
 
 DrawnFriend.propTypes = {
