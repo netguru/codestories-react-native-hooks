@@ -5,7 +5,7 @@ import Screen from 'components/Screen'
 import Header from 'components/Header/Header.component'
 import Text from 'components/Text'
 import List from 'components/List/List.component'
-import { AppContext, removeEmptyFriends } from 'contexts/app.context'
+import {AppContext, removeEmptyFriends, reset} from 'contexts/app.context'
 import { NavigationPropTypes } from 'app/prop-types'
 import Button from 'components/Button'
 
@@ -40,13 +40,16 @@ export default function PersonSelect({ navigation }) {
     </>
   )
 
-  const goToStart = () => navigation.reset([NavigationActions.navigate({ routeName: 'Home' })], 0)
+  const resetFlow = () => {
+    dispatch(reset())
+    navigation.reset([NavigationActions.navigate({ routeName: 'Home' })], 0)
+  }
 
   const renderAllDrawnInfo = () => (
     <>
       <Header>All done!</Header>
       <Text emphasized>Everyone has their draw. Have fun!</Text>
-      <Button style={styles.button} label="Start again" onPress={goToStart} />
+      <Button style={styles.button} label="Start again" onPress={resetFlow} />
     </>
   )
 

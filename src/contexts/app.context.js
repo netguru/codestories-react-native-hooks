@@ -26,6 +26,8 @@ const reducer = (state, action) => {
       }
     case 'REMOVE_EMPTY_FRIENDS':
       return { ...state, friends: state.friends.filter((friend) => !!friend.name.trim()) }
+    case 'RESET':
+      return initialState
     default:
       return state
   }
@@ -36,6 +38,7 @@ export const addFriend = (friend) => ({ type: 'ADD_FRIEND', payload: friend })
 export const removeFriend = (friendId) => ({ type: 'REMOVE_FRIEND', payload: friendId })
 export const updateFriend = (updatedFriend) => ({ type: 'UPDATE_FRIEND', payload: updatedFriend })
 export const removeEmptyFriends = () => ({ type: 'REMOVE_EMPTY_FRIENDS' })
+export const reset = () => ({ type: 'RESET' })
 
 export function AppProvider({ children }) {
   const value = useReducer(reducer, initialState)
